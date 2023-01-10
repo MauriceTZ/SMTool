@@ -18,6 +18,38 @@ SHAPEID_METAL_BLOCK_1 = "8aedf6c2-94e1-4506-89d4-a0227c552f1e"
 SHAPEID_BARRIER_BLOCK = "09ca2713-28ee-4119-9622-e85490034758"
 SHAPEID_PLASTIC_BLOCK = "628b2d61-5ceb-43e9-8334-a4135566df7a"
 
+DIRECTION_PLUSY_PLUSZ = (3, 1)
+"""
+positive Y positive Z
+"xaxis": 3,
+"zaxis": 1
+"""
+
+DIRECTION_NEGX_PLUSZ = (-2, -1)
+"""
+negative X positive Z
+"xaxis": -2,
+"zaxis": -1
+"""
+
+DIRECTION_PLUSX = (2, 1)
+"""
+"xaxis": 2,
+"zaxis": 1
+"""
+
+DIRECTION_IDK_LOL = (3, -2)
+"""
+"xaxis": 3,
+"zaxis": -2
+"""
+
+DIRECTION_5 = (1, 3)
+"""
+"xaxis": 1,
+"zaxis": 3
+"""
+
 class Blueprint(dict):
     """Scrap Mechanic Blueprint Class"""
     def __init__(self, file: str | None = None) -> None:
