@@ -21,11 +21,11 @@ SHAPEID_PLASTIC_BLOCK = "628b2d61-5ceb-43e9-8334-a4135566df7a"
 class Blueprint(dict):
     """Scrap Mechanic Blueprint Class"""
     def __init__(self, file: str | None = None) -> None:
-        r"""Use the file argument to load an existing blueprint in a particular path, example:
+        r"""(*** i've never used this so idk if its working lmao ***) Use the file argument to load an existing blueprint in a particular path, example:
 
             car = Blueprint(r"C:\Users\YourUserName\AppData\Roaming\Axolot Games\Scrap Mechanic\User\User_1234\Blueprints\475db678-e788-4234-b649-f33106890e04\blueprint.json")
 
-            If you want to create a new blueprint, don't pass any arguments"""
+            (*** this works ***) If you want to create a new blueprint, don't pass any arguments"""
         if file == None:
             super().__init__(self, bodies=[{"childs": []}], version=3)
         else:
@@ -60,6 +60,7 @@ class Blueprint(dict):
         save.close()
 
     def getBlocks(self, filter: Callable[..., bool] | None = None):
+        """never tested"""
         out = []
         if not callable(filter):
             for dict in self["bodies"][0]["childs"]:
