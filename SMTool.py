@@ -134,8 +134,9 @@ class Connectable_Block(Base_Block):
     output_count: int
     """Number of outgoing connections"""
 
-    def __init__(self, color: str, controllers, id: int | ID_Handler, pos: list[int], shapeId: str, direction: list[int]) -> None:
-        super().__init__(color, pos, shapeId, direction)
+    def __init__(self, color: str, controllers, id: int | ID_Handler, pos: list[int], shapeId: str, direction: list[int] | None = None) -> None:
+        """just realized bounded blocks always have the same orientation"""
+        super().__init__(color, pos, shapeId, [1, 3])
         if isinstance(id, int):
             self["controller"] = { "active": False, "controllers": controllers, "id": id, "joints": None }
         elif isinstance(id, ID_Handler):
