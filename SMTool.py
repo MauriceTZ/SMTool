@@ -1,5 +1,6 @@
 import json
 import numpy as np
+import os
 from typing import Literal
 from collections.abc import Callable, Iterable
 import warnings
@@ -69,6 +70,37 @@ class Blueprint(dict):
     def load_list_block(self, list):
         super().clear()
         super().__init__(self, bodies=[{"childs": list}], version=3)
+
+
+    def get_path():
+        """Iterates through %APPDATA% and returns a list of all the directories behind the given path
+        
+        Then get's the [1] item of that list, which should be the blueprint folder."""
+        return [x[0] for x in os.walk(os.getenv('APPDATA')+"\\Axolot Games\\Scrap Mechanic\\User")][1]
+
+
+    
+    def blueprint_search(self,search_term):
+        """Uses a search term to retrieve the blueprint file of a creation ! WITH A SPECIFIC NAME.lower() !"""
+        blueprints = [x[0] for x in os.walk(self.get_path()+"\\Blueprints")]
+        for i in range(len(blueprints)):
+            if i==0:
+                continue
+            try:
+                with open(blueprints[i]+"\\description.json") as f:
+                    data = json.load(f)
+            except:
+                #raise TypeError("This blueprint does not have a description.json")
+                pass
+            print(data['name'])
+            if data['name'].lower() == search_term.lower():
+                file = json.load(open(blueprints[i]+"\\blueprint.json"))
+                path = blueprints[i]
+
+        if file == 0:
+            return None
+        return [file, path] #Returns blueprint file, and the path for the blueprint file
+
 
     # @classmethod
     # def from_list_block(cls, list: list):
