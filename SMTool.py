@@ -73,7 +73,9 @@ class Blueprint(dict):
 
 
     def get_path():
-        """Iterates through %APPDATA% and returns a list of all the directories behind the given path
+        """WORKS FOR WINDOWS USERS ONLY !
+        
+        Iterates through %APPDATA% and returns a list of all the directories behind the given path
         
         Then get's the [1] item of that list, which should be the blueprint folder."""
         return [x[0] for x in os.walk(os.getenv('APPDATA')+"\\Axolot Games\\Scrap Mechanic\\User")][1]
@@ -81,7 +83,9 @@ class Blueprint(dict):
 
     
     def blueprint_search(self,search_term):
-        """Uses a search term to retrieve the blueprint file of a creation ! WITH A SPECIFIC NAME.lower() !"""
+        """WORKS FOR WINDOWS USERS ONLY !
+
+        Uses a search term to retrieve the blueprint file of a creation ! WITH A SPECIFIC NAME.lower() !"""
         blueprints = [x[0] for x in os.walk(self.get_path()+"\\Blueprints")]
         for i in range(len(blueprints)):
             if i==0:
