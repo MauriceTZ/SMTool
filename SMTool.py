@@ -852,10 +852,14 @@ def MakeFakeConnect(cls: type):
 shapeId_to_class = {
     SHAPEID_DUCK_HOLDER: Duck_Holder,
     SHAPEID_LOGIC_GATE: Logic_Gate,
+    SHAPEID_TIMER: Timer,
     SHAPEID_HEADLIGHT: Headlight,
     SHAPEID_SWITCH: Switch,
+    SHAPEID_BUTTON: Button,
     SHAPEID_GLASS_BLOCK: Glass_Block,
     SHAPEID_THRUSTER: Thruster,
     SHAPEID_METAL_BLOCK_1: Metal_Block_1,
-    SHAPEID_BARRIER_BLOCK: Barrier_Block
+    SHAPEID_BARRIER_BLOCK: Barrier_Block,
+    SHAPEID_PLASTIC_BLOCK: Plastic_Block,
+    SHAPEID_SENSOR: Sensor,
 }
