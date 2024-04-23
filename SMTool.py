@@ -293,7 +293,7 @@ class Glass_Block(Boundable_Block):
 
     @classmethod
     def from_dict(cls, dict: dict):
-        return cls(dict["bounds"], dict["color"], dict["pos"].values(), (dict["xaxis"], dict["zaxis"]))
+        return cls(dict["bounds"].values(), dict["color"], dict["pos"].values())
 
 class Thruster(Connectable_Block):
     def __init__(self, color: str, controllers, id: int, level: int, pos: list[int], direction: list[int]) -> None:
@@ -310,7 +310,7 @@ class Metal_Block_1(Boundable_Block):
 
     @classmethod
     def from_dict(cls, dict: dict):
-        return cls(dict["bounds"].values(), dict["color"], dict["pos"].values(), (dict["xaxis"], dict["zaxis"]))
+        return cls(dict["bounds"].values(), dict["color"], dict["pos"].values())
 
 class Barrier_Block(Boundable_Block):
     def __init__(self, bounds: list[int], color: str, pos: list[int]) -> None:
@@ -318,7 +318,7 @@ class Barrier_Block(Boundable_Block):
 
     @classmethod
     def from_dict(cls, dict: dict):
-        return super().from_dict(dict)
+        return cls(dict["bounds"].values(), dict["color"], dict["pos"].values())
 
 class Plastic_Block(Boundable_Block):
     def __init__(self, bounds: list[int], color: str, pos: list[int]) -> None:
@@ -326,7 +326,7 @@ class Plastic_Block(Boundable_Block):
 
     @classmethod
     def from_dict(cls, dict: dict):
-        return super().from_dict(dict)
+        return cls(dict["bounds"].values(), dict["color"], dict["pos"].values())
 
 def decoder(id_handler: ID_Handler, nBits: int, pos: tuple[int, int, int] = (0, 0, 0)):
     """Creates a binary decoder
