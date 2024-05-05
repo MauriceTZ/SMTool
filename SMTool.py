@@ -18,6 +18,7 @@ SHAPEID_THRUSTER = "a736ffdf-22c1-40f2-8e40-988cab7c0559"
 SHAPEID_METAL_BLOCK_1 = "8aedf6c2-94e1-4506-89d4-a0227c552f1e"
 SHAPEID_BARRIER_BLOCK = "09ca2713-28ee-4119-9622-e85490034758"
 SHAPEID_PLASTIC_BLOCK = "628b2d61-5ceb-43e9-8334-a4135566df7a"
+SHAPEID_SENSOR = "20dcd41c-0a11-4668-9b00-97f278ce21af"
 
 DIRECTION_PLUSY_PLUSZ = (3, 1)
 """
@@ -327,6 +328,19 @@ class Plastic_Block(Boundable_Block):
     @classmethod
     def from_dict(cls, dict: dict):
         return cls(dict["bounds"].values(), dict["color"], dict["pos"].values())
+
+class Sensor(Connectable_Block):
+    def __init__(self, color: str, controllers, id: int | ID_Handler, audioEnable: bool, buttonMode: bool, color_detect: str, colorMode: bool, range: int,  pos: list[int], direction: list[int]) -> None:
+        super().__init__(color, controllers, id, pos, SHAPEID_SENSOR, direction)
+        self["controller"]["audioEnable"] = audioEnable
+        self["controller"]["buttonMode"] = buttonMode
+        self["controller"]["color"] = color_detect
+        self["controller"]["range"] = range
+        self["controller"]["colorMode"] = colorMode
+
+    @classmethod
+    def from_dict(cls, dict: dict):
+        return cls(dict["color"], dict["controller"]["controllers"], dict["controller"]["id"], dict["controller"]["audioEnable"], dict["controller"]["buttonMode"], dict["controller"]["color"], dict["controller"]["colorMode"], dict["controller"]["range"], dict["pos"].values(), (dict["xaxis"], dict["zaxis"]))
 
 def decoder(id_handler: ID_Handler, nBits: int, pos: tuple[int, int, int] = (0, 0, 0)):
     """Creates a binary decoder
